@@ -1,11 +1,11 @@
 import numpy as np
 import unittest
 class Weapons:
-    def __init__(self,munition: int, range :int):
-        assert munition >= 0 and munition <= 10, "les munitions doivent etre des entiers compris entre 0 et 10 "
-        assert range > 0
+    def __init__(self,  munition=22, rayon=1):
+        assert munition >= 0 and munition <= 22, "les munitions doivent etre des entiers compris entre 0 et 22 "
+        assert rayon > 0 and rayon < 100, "le rayon d'action doit etre compris entre 0 et 100"
         self._munition=munition
-        self._range = range
+        self._range = rayon
 
     def fire_at(self,x,y,z):
         assert self._munition > 0, "NoAmunitionError"
@@ -16,7 +16,7 @@ arme=Weapons(5,89)
 
 
 class LMantisurface (Weapons):
-    def __init__(self, munition: int):
+    def __init__(self, munition=22):
         super().__init__(munition, 30)
 
     def fire_at (self, x:int, y=int, z=int):
@@ -30,7 +30,7 @@ class LMantisurface (Weapons):
 
 
 class Lancetorpilles (Weapons):
-    def __init__(self, munition: int):
+    def __init__(self, munition=22):
         super().__init__(munition, 20)
 
     def fire_at(self, x, y, z):
@@ -44,7 +44,7 @@ class Lancetorpilles (Weapons):
 
 
 class LMantiair(Weapons):
-    def __init__(self, munition: int):
+    def __init__(self, munition=22):
         super().__init__(munition, 40)
 
     def fire_at (self,x,y,z):
